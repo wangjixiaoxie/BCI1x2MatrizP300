@@ -1,0 +1,12 @@
+Record	Persona	Estimulo	descanso	tandas	Eleccion
+
+6	Nahuel	100		900		50	si
+7	Nahuel	100		900		50	no
+
+1	Fer	100		900		100	si
+2	Fer	100		900		100	no
+3	Fer	100		900		100	si-no-xx (no) (fallida)
+4	Fer	100		900		100	si-no (carton)
+5	Fer	100		900		100	xx (si)
+
+1	mati	100		900		100	no
