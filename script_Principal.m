@@ -37,8 +37,7 @@ fs              = 128;
 
 %% Carga de datos del estudio EEG
 
-path = './estudios/fer1.CSV';
-
+path = './Estudios/Software1x2/fer1.CSV';
 nEleccion = 1;
 
 [CH_AF3,CH_F7,CH_F3,CH_FC5,CH_T7,CH_P7,CH_01,CH_02,CH_P8,CH_T8,CH_FC6,CH_F4,CH_F8,CH_AF4,CH_CMS,CH_DRL,MARKER]  = CargarWorkspace(path);
@@ -85,8 +84,19 @@ for elec = 1 : length(eleccion)
  %% Procesamiento (wavelet) y informacion de energia
     
     fprintf('\n\n Eleccion numero: %d',nEleccion); nEleccion = nEleccion + 1;
-    verificacionEnergia(siNormalizado{elec},noNormalizado{elec},0);
-    resultado = Procesar(siNormalizado{elec},noNormalizado{elec},5,'noplot');
+    
+    %% Forma (1)
+    % verificacionEnergia(siNormalizado{elec},noNormalizado{elec},0);
+    % resultado = Procesar(siNormalizado{elec},noNormalizado{elec},5,'noplot');
+    
+    %% Forma (2)
+    % De la forma (1) está normalizada la energía y da el mismo valor de
+    % energía para ambas señales. Acá le saqué la normalización.
+    
+    verificacionEnergia(siPromedio{elec},noPromedio{elec},0);
+    resultado = Procesar(siPromedio{elec},noPromedio{elec},5,'noplot');
+     
+    %% Continua procesamiento (Wavelet) y información de energía
     energiaTemp=verificacionEnergia(resultado{1},resultado{2},1);
 
 %% Ploteo de resultados obtenidos en tiempo
@@ -103,5 +113,5 @@ for elec = 1 : length(eleccion)
     inicioP300=round(fs*0.250);
     finP300=round(fs*0.350);
     EvaluarEleccion(resultado{1},resultado{2},elec, inicioP300,finP300,path);
-end
 
+end
