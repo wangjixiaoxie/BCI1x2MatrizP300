@@ -1,6 +1,6 @@
 function [] = plotTiempo(siProm,noProm,elec,xTemp,titulo,ejeX,ejeY,gridEstado,varargin)
 
-    figure('NumberTitle','off','name',['Experimento NÂ°: ' num2str(elec)]); 
+    figure('NumberTitle','off','name',['Experimento N°: ' num2str(elec)]); 
 
     plot(xTemp,siProm,'LineWidth',4); hold on;
     title(titulo,'FontSize',20); ylabel(ejeY);
